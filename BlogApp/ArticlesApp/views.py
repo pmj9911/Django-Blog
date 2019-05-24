@@ -10,4 +10,4 @@ def article_list(request):
 def article_detail(request,slug):
 	return HttpResponse(slug)
 
-#comment added for the branch testing
+#comment added for the branch testingtdcfgyiifugyio7ukujhjbhvfyd5
