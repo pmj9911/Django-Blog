@@ -20,3 +20,4 @@ urlpatterns = [
     path('',views.article_list),
     re_path('(?P<slug>[\w-]+)/',views.article_detail),
 ]
+ #vgvjhuogivgjbhuvg
