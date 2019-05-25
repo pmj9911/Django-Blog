@@ -8,6 +8,13 @@
     </head>
     <body>
     	<div class="wrapper">
+            <h1><a href="{% url 'ArticlesApp:list' %} "><img src="{% static 'logo.png' %}"></a></h1>
+            <ul>
+                <li><form class="logout-link" action= "{% url 'accounts:logout' %}" method="post">
+                    {% csrf_token %}
+                    <button type="submit">logout</button>
+                </form>
+            </ul>
     		{% block content %}
     		{% endblock %}
     	</div>

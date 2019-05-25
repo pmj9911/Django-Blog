@@ -6,7 +6,7 @@ class Article(models.Model):
     slug = models.SlugField()
     body = models.TextField()
     date = models.DateTimeField(auto_now_add=True)
-    # add in thumbnail later
+    thumb =  models.ImageField(default='default.png',blank=True)
     # add in author later
 
     def __str__(self):
@@ -14,4 +14,4 @@ class Article(models.Model):
 
 
     def snippet(self):
-    	return self.body[:50] + "   ..click here to view more.."
+    	return self.body[:50]
