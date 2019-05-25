@@ -4,7 +4,7 @@
 {% block content %}
     <div class="create-article">
     	<h2> Contribute a new article </h2>
-    	<form class="site-form" action="{% url 'ArticlesApp:create' %}" method="post" enctype="multipart/form-data">
+    	<form class=" create-article-form " action="{% url 'ArticlesApp:create' %}" method="post" enctype="multipart/form-data">
     		{% csrf_token %}
     		{{ form }}
     		<input type="submit" name="Create">

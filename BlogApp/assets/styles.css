@@ -60,18 +60,24 @@ nav button{
     grid-gap: 20px;
 }
 
-.article{
+.articles .article{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
     padding: 5px;
     border: 1px solid #00dba0;
     position: relative;
     padding-bottom: 0px;
 }
 
-.article h2{
+.articles .article img{
+    max-width: 100%;
+}
+
+.articles .article h2{
     font-size: 1.2em;
 }
 
-.article .author{
+.articles .article .author{
     padding: 10px;
     background: #00dba0;
     position: absolute;
@@ -142,6 +148,28 @@ a.highlight{
 }
 
 .site-form input[type="submit"]{
+    background: #00dba0;
+    border: 0;
+    color: #fff;
+    font-size: 20px;
+    border-radius: 4px;
+    margin: 10px 0;
+}
+
+
+.create-article-form {
+    margin-top: 60px;
+    border: 1px solid #00dba0;
+    padding: 20px;
+}
+
+.create-article-form input, .create-article-form textarea{
+    display: block;
+    margin: 20px 0 0px 0;
+    padding: 10px;
+}
+
+.create-article-form input[type="submit"]{
     background: #00dba0;
     border: 0;
     color: #fff;
