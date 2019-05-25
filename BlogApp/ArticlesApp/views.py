@@ -1,8 +1,8 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import Article
 from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
-# Create your views here.
+from . import forms
 
 def article_list(request):
     articles = Article.objects.all().order_by('date')
@@ -13,7 +13,16 @@ def article_detail(request,slug):
     article = Article.objects.get(slug=slug)
     return render(request, 'ArticlesApp/article_detail.html',{'article':article})
 
-@login_required
+@login_required(login_url="/accounts/login/")
 def article_create(request):
-	return render(request, 'ArticlesApp/article_create.html')
+	if request.method== "POST" :
+		form = forms.CreateArticle(request.POST,request.FILES)
+		if form.is_valid():
+			instance=form.save(commit=False)
+			instance.author = request.user
+			instance.save()
+			return redirect('ArticlesApp:list')			
+	else:
+		form = forms.CreateArticle()
+	return render(request, 'ArticlesApp/article_create.html',{'form':form})
 
