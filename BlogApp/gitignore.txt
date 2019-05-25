@@ -1,0 +1,12 @@
+# IntelliJ project files
+.idea
+*.iml
+out
+gen
+.DS_store
+*.pyc
+db.sqlite3
+_DS_Store
+media/
+/db.sqlite3
+/staticfiles
