@@ -3,7 +3,10 @@ from .models import Article
 from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
 from . import forms
-
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from rest_framework import status
+from .serializers import ArticleSerializer
 def article_list(request):
     articles = Article.objects.all().order_by('date')
     return render(request, 'ArticlesApp/articles_list.html',{'articles':articles})
@@ -26,3 +29,8 @@ def article_create(request):
 		form = forms.CreateArticle()
 	return render(request, 'ArticlesApp/article_create.html',{'form':form})
 
+class ArticlesList(APIView):
+	def get(self,request):
+		articles = Article.objects.all()
+		serializer = ArticleSerializer(articles, many=True)
+		return Response(serializer.data)

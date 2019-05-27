@@ -15,14 +15,15 @@ Including another URLconf
 """
 from django.urls import path, re_path 
 from . import views
-
+from rest_framework.urlpatterns import format_suffix_patterns
 app_name = "ArticlesApp"	
 # re_path is a variable which works with regular expressions
 urlpatterns = [
     path('',views.article_list, name="list"),
     path('create/', views.article_create, name="create"),
+    path('articlesApi', views.ArticlesList.as_view()),
     re_path('(?P<slug>[\w-]+)/',views.article_detail, name="detail"),
 ]
 
-
+urlpatterns = format_suffix_patterns(urlpatterns, allowed=['json', 'html'])
  #just some random shit for testing git
