@@ -6,9 +6,18 @@
            <div class="article"> 
              <img src="{{ article.thumb.url }}"/>
                 <h2>{{ article.title }}</h2>
+                <p> {{article.pk}}</p>
                 <p>{{ article.body }}</p>
                 <p>{{ article.date }}</p>
-                <p> {{article.document.url}}</p>
+                <p> <a href=" {{article.document.url}}" target="_blank"> click here</a> to donwload the document associated with the article 	{{article.author}}</p>
+                {% if user.is_authenticated %}
+                	{% if request.user == article.author %}
+                		<form action="{% url 'ArticlesApp:delete' article.pk %}" method="post" >
+				    		{% csrf_token %}
+    						<input type="submit" value="Delete">
+    					</form>
+                	{% endif %}
+                {% endif %}
            </div>
        </div>
 {% endblock %}

@@ -13,6 +13,9 @@
                 <ul>
                     {% if user.is_authenticated %}
                     <li>
+                        <a href = "{% url 'accounts:profile' Username=user.get_username %}" > Profile </a> 
+                    </li>
+                    <li>
                         <form class="logout-link" action="{% url 'accounts:logout' %}" method="post">
                             {% csrf_token %}
                             <button type="submit">Logout</button>

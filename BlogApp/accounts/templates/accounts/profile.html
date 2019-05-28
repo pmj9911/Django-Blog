@@ -1,0 +1,14 @@
+{% extends 'base_layout.html' %}
+
+
+{% block content %}
+       <div class="profile-detail">           
+           <div class="profile"> 
+             <img src="{{ profile.thumb.url }}"/>
+                <h2>Username:   {{ profile.Username }}</h2>
+                <p>First Name:  {{profile.First_Name}}</p>
+                <p>Last Name:   {{ profile.Last_Name }}</p>
+                <p>email Address:  {{ profile.email }}</p>
+           </div>
+       </div>
+{% endblock %}

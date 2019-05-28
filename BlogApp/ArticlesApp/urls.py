@@ -22,8 +22,8 @@ urlpatterns = [
     path('',views.article_list, name="list"),
     path('create/', views.article_create, name="create"),
     path('articlesApi', views.ArticlesList.as_view()),
+    path('delete/<int:pk>/', views.article_delete, name ="delete" ),
     re_path('(?P<slug>[\w-]+)/',views.article_detail, name="detail"),
 ]
 
 urlpatterns = format_suffix_patterns(urlpatterns, allowed=['json', 'html'])
- #just some random shit for testing git

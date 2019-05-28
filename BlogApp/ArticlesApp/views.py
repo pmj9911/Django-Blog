@@ -18,7 +18,7 @@ def article_detail(request,slug):
 
 @login_required(login_url="/accounts/login/")
 def article_create(request):
-	if request.method== "POST" :
+	if request.method == "POST" :
 		form = forms.CreateArticle(request.POST,request.FILES)
 		if form.is_valid():
 			instance=form.save(commit=False)
@@ -28,6 +28,12 @@ def article_create(request):
 	else:
 		form = forms.CreateArticle()
 	return render(request, 'ArticlesApp/article_create.html',{'form':form})
+
+def article_delete(request, pk):
+	if request.method == "POST":
+		article = Article.objects.get(pk=pk)
+		article.delete()
+	return redirect('ArticlesApp:list')
 
 class ArticlesList(APIView):
 	def get(self,request):
