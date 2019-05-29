@@ -2,22 +2,35 @@
 
 
 {% block content %}
+       
+       {% block updateArticle %}
+       {% endblock %}
+
        <div class="article-detail">           
            <div class="article"> 
-             <img src="{{ article.thumb.url }}"/>
+                <img src="{{ article.thumb.url }}"/>
                 <h2>{{ article.title }}</h2>
-                <p> {{article.pk}}</p>
                 <p>{{ article.body }}</p>
                 <p>{{ article.date }}</p>
-                <p> <a href=" {{article.document.url}}" target="_blank"> click here</a> to donwload the document associated with the article 	{{article.author}}</p>
+                <p>
+                  <div class="download-a">
+                      <a href=" {{article.document.url}}" target="_blank"> Download Attachment !</a> 
+                  </div>
+
+                </p>
                 {% if user.is_authenticated %}
                 	{% if request.user == article.author %}
-                		<form action="{% url 'ArticlesApp:delete' article.pk %}" method="post" >
-				    		{% csrf_token %}
-    						<input type="submit" value="Delete">
-    					</form>
-                	{% endif %}
+                	  <div class="Update-a">
+                        <a  href="{% url 'ArticlesApp:update' slug=article.slug %}"> &nbsp;Update !!&nbsp; </a>
+                    </div>
+                    <form class="delete-form" action="{% url 'ArticlesApp:delete' article.pk %}" method="post" >
+				          		{% csrf_token %}
+    			       			<input type="submit" value="Delete !!!">
+    					      </form>
+                  {% endif %}
                 {% endif %}
            </div>
        </div>
+
+       
 {% endblock %}

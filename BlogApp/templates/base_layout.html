@@ -24,7 +24,11 @@
                             <button type="submit">Logout</button>
                         </form>
                     </li>
-                    <li><a href="{% url 'ArticlesApp:create' %}" class="highlight">New Article</a></li>
+                    <li>
+                        <div class="newArticle">
+                            <a href="{% url 'ArticlesApp:create' %}" class="highlight">New Article</a>
+                        </div>
+                    </li>
                     {% else %}
                     <li><a href="{% url 'accounts:login' %}">Login</a></li>
                     <li><a href="{% url 'accounts:signup' %}">Signup</a></li>

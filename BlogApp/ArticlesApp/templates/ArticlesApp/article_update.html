@@ -1,0 +1,12 @@
+{% extends 'ArticlesApp/article_detail.html' %}
+
+{% block updateArticle %}
+	<span class="Update-Article-Blink"> Scroll down for the original Article! </span>
+	<form class="Update-Profile-form" action="{% url 'ArticlesApp:update' slug=article.slug %}" method="post" enctype="multipart/form-data">
+         {% csrf_token %}
+         {{ form }}
+		 <input type="submit" name="Update">
+	</form>
+    <script src ="/static/slugify.js"></script>
+	<br><br><br>	
+{% endblock %}

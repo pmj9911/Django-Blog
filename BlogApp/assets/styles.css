@@ -23,6 +23,14 @@ a, a:hover, a:visited{
     max-width: 960px;
     margin: 0 auto;
 }
+.wrapper .new-Article {
+      background: #00dba0;
+    border: 0;
+    color: #fff;
+    font-size: 20px;
+    border-radius: 4px;
+    margin: 10px 0;
+}
 
 div.wrapper > h1{
     text-align: center;
@@ -52,6 +60,33 @@ nav button{
     cursor: pointer;
     border: 0;
     font-size: 16px;
+}
+
+nav .newArticle a:link, a:visited {
+ 
+  border: 2;    
+    border-style:solid;
+    font-size: 20px;
+    border-radius: 4px;
+    color: #bde63e;
+    margin: 10px 0;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: fit-content;
+}
+
+nav .newArticle a.highlight{
+    border: 1px solid #00dba0;
+    padding: 10px;
+    border-radius: 4px;
+    color: #00dba0;
+}
+
+nav .newArticle a:hover, a:active {
+  background-color: #df0000;
+  color: #fff;
+  border: 1px solid #fff;
 }
 
 .articles{
@@ -93,6 +128,11 @@ nav button{
 
 .article-detail  .article img{
     max-width: 100%;
+/*     max-height: 300px; */
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 60%;
 }
 
 .article-detail  .article h2{
@@ -106,7 +146,8 @@ nav button{
 }
 
 .article-detail  .article p{
-    margin: 10px 20px
+    margin: 10px 20px;
+    text-align:  justify;
 } 
 
 .site-form {
@@ -119,13 +160,6 @@ nav button{
     display: block;
     margin: 20px 0 0px 0;
     padding: 10px;
-}
-
-a.highlight{
-    border: 1px solid #00dba0;
-    padding: 10px;
-    border-radius: 4px;
-    color: #00dba0;
 }
 
 .helptext, .helptext ul{
@@ -235,10 +269,6 @@ a.highlight{
     padding: 10px;
 }
 
-.Update-Profile-form input[type="checkbox"]{
-      visibility: hidden;
-
-}
 .Update-Profile-form input[type="submit"]{
     background: #00dba0;
     border: 0;
@@ -247,3 +277,65 @@ a.highlight{
     border-radius: 4px;
     margin: 10px 0;
 }
+
+.Update-Article-Blink{
+    animation:blinkingText 2s linear 3;
+    color: #00dba0;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: fit-content;
+}
+
+@keyframes blinkingText{
+    0%{     color: #000;    }
+    49%{    color: #00dba0; }
+    50%{    color: #00dba0; }
+    99%{    color: #00dba0;  }
+    100%{   color: #000;    }
+}
+
+.article-detail .article .delete-form input[type="submit"]{
+    background: #e01111;
+    border: 0;
+    color: #fff;
+    font-size: 20px;
+    border-radius: 4px;
+    margin: 10px 0;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: fit-content;
+}
+
+.article-detail .article .Update-a a:link, a:visited {
+  background-color: #00dba0;
+  border: 0;
+    color: #fff;
+    font-size: 20px;
+    border-radius: 4px;
+    margin: 10px 0;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: fit-content;
+}
+
+.article-detail .article .Update-a a:hover, a:active {
+  background-color: #df0000;
+}
+
+.article-detail .article .download-a{
+  color: #fff;
+  text-align: center;
+  -webkit-animation: glow .5s ease-in-out infinite alternate;
+  -moz-animation: glow .5s ease-in-out infinite alternate;
+  animation: glow 1s ease-in-out infinite alternate;
+}
+
+@-webkit-keyframes glow {
+  from {
+    text-shadow: 0 0 10px #00dba0, 0 0 20px #00dba0 }
+  
+  to {
+    text-shadow: 0 0 10px #df0000, 0 0 20px #ff0000 }

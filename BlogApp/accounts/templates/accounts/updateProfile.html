@@ -1,6 +1,6 @@
 {% extends 'accounts/profile.html' %}
 
-{% block update %}
+{% block updateProfile %}
 	<form class="Update-Profile-form" action="{% url 'accounts:update' %}" method="post" enctype="multipart/form-data">
          {% csrf_token %}
          {{ form }}

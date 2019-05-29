@@ -23,7 +23,8 @@ urlpatterns = [
     path('create/', views.article_create, name="create"),
     path('articlesApi', views.ArticlesList.as_view()),
     path('delete/<int:pk>/', views.article_delete, name ="delete" ),
-    re_path('(?P<slug>[\w-]+)/',views.article_detail, name="detail"),
+    re_path('update/(?P<slug>[\w-]+)/', views.article_update, name ="update" ),
+    re_path('detail/(?P<slug>[\w-]+)/',views.article_detail, name="detail"),
 ]
 
 urlpatterns = format_suffix_patterns(urlpatterns, allowed=['json', 'html'])

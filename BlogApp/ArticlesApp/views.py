@@ -7,12 +7,13 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 from .serializers import ArticleSerializer
+
 def article_list(request):
     articles = Article.objects.all().order_by('date')
     return render(request, 'ArticlesApp/articles_list.html',{'articles':articles})
 
+@login_required(login_url="/accounts/login/")
 def article_detail(request,slug):
-	#return HttpResponse(slug)	
     article = Article.objects.get(slug=slug)
     return render(request, 'ArticlesApp/article_detail.html',{'article':article})
 
@@ -29,11 +30,25 @@ def article_create(request):
 		form = forms.CreateArticle()
 	return render(request, 'ArticlesApp/article_create.html',{'form':form})
 
+@login_required(login_url="/accounts/login/")
 def article_delete(request, pk):
 	if request.method == "POST":
 		article = Article.objects.get(pk=pk)
 		article.delete()
 	return redirect('ArticlesApp:list')
+
+@login_required(login_url="/accounts/login/")
+def article_update(request,slug):
+	instance = Article.objects.get(slug=slug)
+	if request.method == 'POST':
+		form = forms.UpdateArticle(request.POST, request.FILES, instance=instance)
+		if form.is_valid():
+			form.save()
+			instance2 = Article.objects.get(slug=slug)
+			return render(request, 'ArticlesApp/article_detail.html', {'article':instance2 })
+	else:
+		form = forms.UpdateArticle(instance=instance)
+	return render(request, 'ArticlesApp/article_update.html', {'form':form , 'article':instance})
 
 class ArticlesList(APIView):
 	def get(self,request):
