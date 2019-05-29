@@ -1,0 +1,9 @@
+{% extends 'accounts/profile.html' %}
+
+{% block update %}
+	<form class="site-form" action="{% url 'accounts:update' %}" method="post" enctype="multipart/form-data">
+         {% csrf_token %}
+         {{ form }}
+		 <input type="submit" name="Update">
+	</form>
+{% endblock %}

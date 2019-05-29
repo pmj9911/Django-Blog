@@ -13,7 +13,7 @@
                 <ul>
                     {% if user.is_authenticated %}
                     <li>
-                        <a href = "{% url 'accounts:profile' Username=user.get_username %}" > Profile </a> 
+                        <a href = "{% url 'accounts:profile' %}" > Profile </a> 
                     </li>
                     <li>
                         <form class="logout-link" action="{% url 'accounts:logout' %}" method="post">

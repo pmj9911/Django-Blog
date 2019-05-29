@@ -177,3 +177,48 @@ a.highlight{
     border-radius: 4px;
     margin: 10px 0;
 }
+
+
+.profile-detail .profile{
+    padding: 0;
+}
+
+.profile-detail  .profile img{
+    max-width: 50%;
+    max-height: 40%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+}
+
+.profile-detail  .profile h2{
+    text-align: center;
+    margin: 20px auto;
+    font-size: 2em
+}
+
+.profile-detail .profile h3{
+    text-align: center;
+}
+
+.profile-detail  .profile p{
+    margin: 10px 20px;
+    text-align: center;
+
+} 
+.profile-detail .update a:link, a:visited {
+  background-color: #00dba0;
+  color: white;
+  padding: 14px 25px;
+  text-align: center;
+  text-decoration: none;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: fit-content;
+}
+
+.profile-detail .update  a:hover, a:active {
+  background-color: red;
+}

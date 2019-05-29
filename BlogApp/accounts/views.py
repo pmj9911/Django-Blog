@@ -22,7 +22,6 @@ def register_view(request):
         if form.is_valid():
             instance = form.save(commit=False)
             instance.Username = request.user
-            instance.linker= instance.First_Name + "-" + instance.Last_Name
             instance.save()
             return redirect('ArticlesApp:list')
     else:
@@ -48,6 +47,18 @@ def logout_view(request):
 		logout(request)
 		return redirect('ArticlesApp:list')
 
-def profile_view(request,Username):
-    profile = Profile.objects.get(Username=Username)
-    return render(request, 'accounts/profile.html',{'profile': profile})
+@login_required(login_url="/accounts/login/")
+def profile_view(request):
+#    # profile = Profile.objects.get(Username=Username)
+    return render(request, 'accounts/profile.html')
+
+@login_required(login_url="/accounts/login/")
+def profile_update(request):
+    if request.method == 'POST':
+        form = forms.UpdateProfile(request.POST, request.FILES, instance=request.user.profile)
+        if form.is_valid():
+            form.save()
+            return redirect('accounts:profile')
+    else:
+        form = forms.UpdateProfile(instance=request.user.profile)
+    return render(request,'accounts/updateProfile.html', { 'form':form })
