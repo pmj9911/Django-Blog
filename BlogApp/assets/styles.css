@@ -185,7 +185,7 @@ a.highlight{
 
 .profile-detail  .profile img{
     max-width: 50%;
-    max-height: 40%;
+    max-height: 400px;
     display: block;
     margin-left: auto;
     margin-right: auto;
@@ -221,4 +221,29 @@ a.highlight{
 
 .profile-detail .update  a:hover, a:active {
   background-color: red;
+}
+
+.Update-Profile-form {
+    margin-top: 60px;
+    border: 1px solid #00dba0;
+    padding: 20px;
+}
+
+.Update-Profile-form input , .Update-Profile-form textarea {
+    display: block;
+    margin: 20px 0 0px 0;
+    padding: 10px;
+}
+
+.Update-Profile-form input[type="checkbox"]{
+      visibility: hidden;
+
+}
+.Update-Profile-form input[type="submit"]{
+    background: #00dba0;
+    border: 0;
+    color: #fff;
+    font-size: 20px;
+    border-radius: 4px;
+    margin: 10px 0;
 }
