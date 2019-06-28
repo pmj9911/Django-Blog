@@ -7,9 +7,24 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 from .serializers import ArticleSerializer
+from django.core.paginator import Paginator
+
 
 def article_list(request):
-    articles = Article.objects.all().order_by('date')
+    article = Article.objects.all().order_by('date')
+
+    page = request.GET.get('page', 1)
+
+    paginator = Paginator(article, 3)
+    try:
+        articles = paginator.page(page)
+    except PageNotAnInteger:
+        articles = paginator.page(1)
+    except EmptyPage:
+        articles = paginator.page(paginator.num_pages)
+
+
+
     return render(request, 'ArticlesApp/articles_list.html',{'articles':articles})
 
 @login_required(login_url="/accounts/login/")
