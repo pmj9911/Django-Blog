@@ -26,6 +26,7 @@ urlpatterns = [
     path('',article_views.article_list, name="home"),
     path('articles/', include('ArticlesApp.urls')),
     path('accounts/', include('accounts.urls')),
+    path('', include('django.contrib.auth.urls')),
 ]
 
 urlpatterns +=staticfiles_urlpatterns()

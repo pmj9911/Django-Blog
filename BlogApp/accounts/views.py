@@ -22,6 +22,7 @@ def register_view(request):
         if form.is_valid():
             instance = form.save(commit=False)
             instance.Username = request.user
+            request.user.Email_Address = instance.Email_Address
             instance.save()
             return redirect('ArticlesApp:list')
     else:
